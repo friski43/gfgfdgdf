@@ -1,0 +1,33 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.rectangle {
+    width: 200px;
+    height: 100px;
+    background-color: #3498db;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.text {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);к
+    color: #fff;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.rectangle:hover .text {
+    opacity: 1;
+}

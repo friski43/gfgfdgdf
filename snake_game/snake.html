@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Гра "Змійка"</title>
+    <style>
+        #game-board {
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            position: relative;
+        }
+
+        .snake {
+            width: 20px;
+            height: 20px;
+            background-color: green;
+            position: absolute;
+        }
+
+        .food {
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Гра "Змійка"</h1>
+    <div id="game-board">
+        <!-- Сюди буде додаватися змійка і їжа через JavaScript -->
+    </div>
+
+    <script>
+        const gameBoard = document.getElementById('game-board');
+        let snake = [{ x: 5, y: 5 }];
+        let food = { x: 10, y: 10 };
+        let direction = 'right';
+
+        function drawGame() {
+            gameBoard.innerHTML = '';
+            
+            // Малюємо змійку
+            for (let i = 0; i < snake.length; i++) {
+                const snakeSegment = document.createElement('div');
+                snakeSegment.className = 'snake';
+                snakeSegment.style.left = snake[i].x * 20 + 'px';
+                snakeSegment.style.top = snake[i].y * 20 + 'px';
+                gameBoard.appendChild(snakeSegment);
+            }
+
+            // Малюємо їжу
+            const foodElement = document.createElement('div');
+            foodElement.className = 'food';
+            foodElement.style.left = food.x * 20 + 'px';
+            foodElement.style.top = food.y * 20 + 'px';
+            gameBoard.appendChild(foodElement);
+        }
+
+        function moveSnake() {
+            let newHead = { x: snake[0].x, y: snake[0].y };
+
+            switch (direction) {
+                case 'up':
+                    newHead.y -= 1;
+                    break;
+                case 'down':
+                    newHead.y += 1;
+                    break;
+                case 'left':
+                    newHead.x -= 1;
+                    break;
+                case 'right':
+                    newHead.x += 1;
+                    break;
+            }
+
+            snake.unshift(newHead);
+
+            // Перевіряємо, чи з'їли їжу
+            if (newHead.x === food.x && newHead.y === food.y) {
+                // Збільшуємо довжину змійки
+                food.x = Math.floor(Math.random() * 15);
+                food.y = Math.floor(Math.random() * 15);
+            } else {
+                // Видаляємо останній сегмент змійки
+                snake.pop();
+            }
+        }
+
+        function changeDirection(event) {
+            switch (event.key) {
+                case 'ArrowUp':
+                    if (direction !== 'down') direction = 'up';
+                    break;
+                case 'ArrowDown':
+                    if (direction !== 'up') direction = 'down';
+                    break;
+                case 'ArrowLeft':
+                    if (direction !== 'right') direction = 'left';
+                    break;
+                case 'ArrowRight':
+                    if (direction !== 'left') direction = 'right';
+                    break;
+            }
+        }
+
+        function gameLoop() {
+            moveSnake();
+            drawGame();
+        }
+
+        // Налаштовуємо обробники подій
+        document.addEventListener('keydown', changeDirection);
+
+        // Запускаємо головний цикл гри
+        setInterval(gameLoop, 150);
+    </script>
+</body>
+</html>

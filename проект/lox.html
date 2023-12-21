@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="LOX.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+</head>
+<body>
+    <div class="header">
+        <div class="overlay" id="overlay">
+            <div class="popup">
+                <p>Purelux is clicked!</p>
+                <button onclick="hidePopup()">Close</button>
+            </div>
+        </div>
+        <div class="img"><svg width="25" height="25" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5.5 24.75H13.75" stroke="#F2F7F9" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5.5 16.5H22" stroke="#F2F7F9" stroke-width="2" stroke-linecap="round"/>
+            <path d="M5.5 8.25H27.5" stroke="#F2F7F9" stroke-width="2" stroke-linecap="round"/>
+        </svg></div> 
+        <div class="purelux">purelux</div>
+        
+    </div>
+    <div class="slider-container">
+        <div class="slider">
+            <img src="Header back 011.jpg" alt="1.png">
+            <img src="Header back 022.jpg" alt="2.png">
+            <img src="Header back 033.jpg" alt="3.png">
+        </div>  
+    </div>
+    <div class="block"></div>
+    <script>
+        function showPopup() {
+            document.getElementById("overlay").style.display = "flex";
+        }
+    
+        function hidePopup() {
+            document.getElementById("overlay").style.display = "none";
+        }
+    </script>
+
+    <script>document.addEventListener("DOMContentLoaded", function () {
+        const slider = document.querySelector(".slider");
+        let count = 0;
+        let intervalId; 
+    
+        function nextSlide() {
+            updateSlider();
+            count++;
+            if (count >= slider.children.length) {
+                count = 0;
+            }
+        }
+    
+        function updateSlider() {
+            const transformValue = -count * 100 + "%";
+            slider.style.transform = "translateX(" + transformValue + ")";
+        }
+    
+        intervalId = setInterval(nextSlide, 3000); 
+    
+        
+        slider.addEventListener("transitionend", function () {
+            clearInterval(intervalId);
+            intervalId = setInterval(nextSlide, 5000);
+        });
+    });
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.header {
+    background-color: black;
+    width: 100%;
+    height: 120px;
+    display: flex;
+    flex-direction: row;
+    align-items: center; 
+    justify-content: space-between; 
+    padding: 0 20px; 
+}
+
+.burger {
+    height: 32px;
+    width: 32px;
+}
+
+.img {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    width: 32px;
+}
+
+.img svg {
+    margin-right: 10px; 
+    cursor: pointer;
+}
+
+.purelux {
+    font-family: Redressed;
+    color: white;
+    font-size: 48px;
+    flex-grow: 1;
+    text-align: center; 
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+@media (max-width: 756px) {
+    .purelux {
+        display: none;
+    }
+
+    .img svg {
+        display: block;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+}
+
+.img {
+    position: relative;
+}
+
+.popup {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+.slider {
+    display: flex;
+    transition: transform 0.1s ease-in-out;
+}
+.slider-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden; /* Додайте цей рядок, щоб сховати інші картинки */
+}
+
+
+
+.slider img {
+    width: 100%;
+    height: 100%;
+}
+@media (max-width: 756px) {
+    .slider {
+        width: 300%; /* Збільште ширину слайдера для кращої видимості на малих екранах */
+    }
+
+    .slider img {
+        min-width: 100%; /* Зробіть зображення в слайдері на весь екран */
+        height: auto;
+    }
+}
+.block {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 350px;
+    height: 200px;
+    border-radius: 10px;
+    background-color: #ccc; /* Choose your desired background color */
+    margin: 20px auto; /* Adjust the margin as needed */
+    opacity: 0.7;
+}

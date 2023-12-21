@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <div class="wrapper">
+            <ul>
+                <li>menu |</li>
+                <li>menu |</li>
+                <li>menu |</li>
+                <li>menu</li>
+            </ul>
+        </div>
+    </div>
+    <div class="content">
+        <div class="wrapper">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis illum facilis natus nobis ea quaerat. Voluptates, totam mollitia repellat accusantium expedita quae consequatur, labore minus corporis autem itaque odio nobis inventore odit adipisci impedit cumque illo consequuntur, iure reprehenderit pariatur quaerat. Amet incidunt voluptas voluptates ullam. Neque reprehenderit minus obcaecati.
+        </div>
+    </div>
+    <button class="btn" onclick="toggleTheme()">Змінити тему</button>
+    <script>
+        let currentTheme = 'pink'; // Зберігаємо початкову тему
+
+        function toggleTheme() {
+            const body = document.body;
+            const wrapper = document.querySelector('.wrapper');
+            const header = document.querySelector('.header');
+
+            if (currentTheme === 'pink') {
+                // Переключаємо на фіолетову тему
+                body.style.backgroundColor = '#9B59B6'; // Фіолетовий фон
+                body.style.color = 'white'; // Білий текст
+                wrapper.style.color = 'white'; // Білий текст контенту
+                header.style.backgroundColor = '#9B59B6'; // Фіолетовий фон шапки
+                currentTheme = 'purple'; // Оновлюємо поточну тему
+            } else {
+                // Переключаємо на рожеву тему
+                body.style.backgroundColor = '#E4CCCC'; // Рожевий фон
+                body.style.color = 'black'; // Чорний текст
+                wrapper.style.color = 'black'; // Чорний текст контенту
+                header.style.backgroundColor = '#E79797'; // Рожевий фон шапки
+                currentTheme = 'pink'; // Оновлюємо поточну тему
+            }
+        }
+    </script>
+</body>
+</html>
